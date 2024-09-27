@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-v2
+  labels:
+    app: my-k8s-app
+    env: prod
+    owner: pavel
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      project: auto
+  template:
+    metadata:
+      labels:
+        project: auto
+    spec:
+      containers:
+        - name: auto-app
+          image: adv4000/k8sphp:latest
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my_autoscaling
+  spec:

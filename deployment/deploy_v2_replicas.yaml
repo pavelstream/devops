@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-v2
+  labels:
+    app: my-k8s-app
+    env: prod
+    owner: pavel
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      project: cia
+  template:
+    metadata:
+      labels:
+        project: cia
+    spec:
+      containers:
+        - name: kgb-app
+          image: adv4000/k8sphp:version2
+          ports:
+            - containerPort: 80
+
