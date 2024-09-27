@@ -1,0 +1,10 @@
+kubectl get pods 		Показать все Pods
+kubectl run pods_name --image=nginx:latest --port=80		Создать Pod из Dockerhub nginx:latest и открыть порт 80
+kubectl port-forward pods_name 7777:80 			Перекидываем порт 80 нашего Pod на порт 7777 нашего компьютера
+kubectl describe pods pods_name 			Показать данные Pod
+kubectl delete pod pods_name				удалиение pod
+kubectl logs pods_name 					Показать логи из Pod
+kubectl exec[-it] pods_name date(bash, etc ) 				запустить команду date и т.д  на Pode (для работы интерактивно указываем флаг -it)
+kubectl apply -f manifest.yaml				Создать Pod при помощи манифеста 
+kubectl delete -f manifest.yaml                         Удаление Poda 
+
